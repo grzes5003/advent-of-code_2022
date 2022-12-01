@@ -1,21 +1,6 @@
-# AOC
+# :christmas_tree: Advent of Code 2022 :christmas_tree:
+![Elixir](https://img.shields.io/badge/elixir-%234B275F.svg?style=for-the-badge&logo=elixir&logoColor=white)
 
-**TODO: Add description**
+Solutions to [Advent of Code 2022] implemented in Elixir
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `aoc2022` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:aoc2022, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/aoc2022>.
-
+[advent of code 2021]: https://adventofcode.com/2022
