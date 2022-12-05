@@ -3,6 +3,8 @@ defmodule AOC.Day05 do
     defstruct [:quant, :src, :trg]
   end
 
+  @variant [:reverse, :classic]
+
   def parse_stack(list) do
     list
     |> Enum.map(fn line -> String.split(line, "", trim: true) end)
@@ -35,38 +37,47 @@ defmodule AOC.Day05 do
   end
 
   def parse(list) do
-      list
-      |> Enum.chunk_by(fn x -> x != "" end)
-      |> (fn [l, _, r] -> [parse_stack(l), parse_instructions(r)] end).()
+    list
+    |> Enum.chunk_by(fn x -> x != "" end)
+    |> (fn [l, _, r] -> [parse_stack(l), parse_instructions(r)] end).()
   end
 
-  def move(stacks, instructions) when hd(instructions).quant > 0 do
+  def move(stacks, instructions, variant) when hd(instructions).quant > 0 do
     instruction = instructions |> hd
 
-    {to, altered} = List.pop_at(stacks[instruction.src], 0)
+    {to, altered} = Enum.split(stacks[instruction.src], instruction.quant)
+
+    to =
+      case variant do
+        :reverse -> Enum.reverse(to)
+        :classic -> to
+      end
 
     stacks =
       stacks
       |> Map.replace!(instruction.src, altered)
-      |> (&Map.replace!(&1, instruction.trg, [to | &1[instruction.trg]])).()
+      |> (&Map.replace!(&1, instruction.trg, to ++ &1[instruction.trg])).()
 
-    ins = %{instruction | quant: instruction.quant - 1}
-    move(stacks, [ins | instructions |> tl])
+    move(stacks, instructions |> tl(), variant)
   end
 
-  def move(stacks, instructions) when hd(instructions).quant == 0,
-    do: move(stacks, instructions |> tl())
-
-  def move(stacks, []), do: stacks
+  def move(stacks, [], _), do: stacks
 
   def part01(args) do
     [items, instr] = parse(args)
-    move(items, instr)
+
+    move(items, instr, :reverse)
     |> Enum.map(fn {_, val} -> hd(val) end)
-    |> List.to_string
-    |> IO.inspect
+    |> List.to_string()
+    |> IO.inspect()
   end
 
   def part02(args) do
+    [items, instr] = parse(args)
+
+    move(items, instr, :classic)
+    |> Enum.map(fn {_, val} -> hd(val) end)
+    |> List.to_string()
+    |> IO.inspect()
   end
 end

@@ -22,6 +22,6 @@ defmodule AOC.Day04Test do
   end
 
   test "part02" do
-    assert part02(input()) == 4
+    assert part02(input()) == "MCD"
   end
 end
