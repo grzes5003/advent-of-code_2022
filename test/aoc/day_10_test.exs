@@ -3,10 +3,6 @@ defmodule AOC.Day10Test do
 
   import AOC.Day10
 
-  def a do
-    [[1, 2], [5, 6]]
-  end
-
   def input do
     [
       "addx 15",
@@ -159,6 +155,6 @@ defmodule AOC.Day10Test do
   end
 
   test "part01" do
-    assert part01(input()) == 24000
+    assert part01(input()) == 13140
   end
 end
