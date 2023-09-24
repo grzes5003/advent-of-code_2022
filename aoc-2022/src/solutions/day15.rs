@@ -118,7 +118,7 @@ pub async fn task02(sonars: Vec<Sonar>) -> Option<Size> {
 
     let sonars_arc = Arc::new(sonars.clone());
     let mut fut = sonars.iter().enumerate()
-        .map(|(idx,sonar)| {
+        .map(|(idx,_)| {
             let sonars = Arc::clone(&sonars_arc);
             runtime.spawn(async move {
                 search_iter(sonars, idx).await
@@ -175,7 +175,7 @@ mod tests {
 
     #[test]
     fn task02_test() -> Result<(), String> {
-        let (sonars, _) = parse_input(input_data())?;
+        let (_, _) = parse_input(input_data())?;
         Ok(())
     }
 }

@@ -47,7 +47,7 @@ impl Map {
     }
 
     fn neighbours(&self, point: Point) -> Vec<Point> {
-        let mut neighbours =
+        let neighbours =
             vec![(point.0 as i16, point.1 as i16 - 1),
                  (point.0 as i16 + 1, point.1 as i16),
                  (point.0 as i16, point.1 as i16 + 1),
