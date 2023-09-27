@@ -1,3 +1,6 @@
+#![allow(unused_imports)]
+#![allow(dead_code)]
+
 mod parser;
 mod solutions;
 use solutions::day15::{task02, parse_input};
