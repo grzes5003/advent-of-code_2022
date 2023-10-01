@@ -455,7 +455,7 @@ mod tests {
     #[test]
     fn task01_test() -> Result<(), String> {
         let input_data = input_data();
-        let mut world = parse_input(&input_data)?;7
+        let mut world = parse_input(&input_data)?;
         println!("task01: {:?}", task01(&mut world));
 
         Ok(())
