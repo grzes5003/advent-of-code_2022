@@ -231,7 +231,7 @@ mod tests {
     fn task02_test() -> Result<(), String> {
         let input_data = input_data();
         let valves = parse_input(&input_data);
-        println!("task01: {:?}", task02(valves));
+        println!("task02: {:?}", task02(valves));
 
         Ok(())
     }
